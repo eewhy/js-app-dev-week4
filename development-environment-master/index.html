@@ -3,18 +3,23 @@
     <meta charset="utf-8" />
     <title>Development Environment</title>
     <script src="/rockpaperscissors.js" async></script>
-    <!-- <style media="screen">
+    <style media="screen">
       #gameSection {
         display: none;
       }
-    </style> -->
+    </style>
   </head>
   <body>
     <h1 id="greeting" >Hello</h1>
-    <button type="button" name="button" onclick="start">Let's start!</button>
+    <button type="button" name="button" onclick="playGame(player1,player2,2)">Let's start!</button>
+    <div id="gameSection">
+    <input type="text" id="hands" name="hands" value="">
+    <button type="submit" id="submitHand" name="button" onclick="playRound(player1,player2)">Submit</button>
     <p id="result"></p>
     <p id="winner"></p>
     <h2 id="finalWinner"></h2>
+
+    </div>
     <!-- <div id="gameSection"> -->
     <!-- <h2 >Pick your hand</h2> -->
     <!-- <button type="button" name="rock" onclick="rock()">Rock</button>

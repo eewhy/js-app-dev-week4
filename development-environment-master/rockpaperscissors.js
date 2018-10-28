@@ -24,6 +24,8 @@ var julie = {
   getHand: getHand,
 };
 
+var gameRound = undefined;
+
 player1.name = window.prompt("Type your name");
 
 function greetOnLoad(){
@@ -46,15 +48,14 @@ var player2Score = 0;
 
 var playRound = function(player1,player2){
 
-  var player1Pick = window.prompt("Type your hand");
+  //var player1Pick = window.prompt("Type your hand");
+  var player1Pick = document.getElementById("hands").value;
   var player2Pick = getHand();
 
   console.log(player1.name + ' picked ' + player1Pick);
-
+  var result = document.createElement("p");
   if(player1Pick=== player2Pick){
-    document.getElementById("result").innerHTML= "It's a tie";
-    console.log('it\'s a tie');
-
+    result.innerHTML = "It's tie";
   } else if(
     player1Pick == 'rock' && player2Pick == 'scissors'
     ||
@@ -63,28 +64,29 @@ var playRound = function(player1,player2){
     player1Pick == 'paper' && player2Pick == 'rock'
     ){
     player1Score++;
-    return console.log(player1.name + ' is the winner!');
-    document.getElementById("winner").innerHTML= player2.name + " wins!";
+    result.innerHTML = player1.name + " wins!"
+    console.log(player1.name + ' is the winner!');
   }else {
     player2Score++;
-    return console.log(player2.name + ' is the winner!');
-    document.getElementById("winner").innerHTML= player2.name + " wins!";
+    result.innerHTML = player2.name + " wins!"
+    console.log(player2.name + ' is the winner!');
   }
+  document.getElementById("result").appendChild(result);
 };
+
+
 
 var playGame = function(player1,player2,playUntil) {
-  while(player1Score <= playUntil && player2Score <= playUntil){
-      playRound(player1,player2);
+  // while(player1Score <= playUntil && player2Score <= playUntil){
+  //     playRound(player1,player2);
+  //  }
+  showGame();
+  gameRound = playUntil;
+   if (player1Score > player2Score) {
+     //console.log(player1.name + ' is the final winner');
+     document.getElementById("finalWinner").innerHTML= player1.name + " is the winner!"
+   }else {
+     //console.log(player2.name + ' is the final winner')
+     document.getElementById("finalWinner").innerHTML= player2.name + " is the winner!"
    }
-
 };
-
-var start = playGame(player1,player2,2);
-
-if (player1Score > player2Score) {
-  //console.log(player1.name + ' is the final winner');
-  document.getElementById("finalWinner").innerHTML= player1.name + " is the winner!"
-}else {
-  //console.log(player2.name + ' is the final winner')
-  document.getElementById("finalWinner").innerHTML= player2.name + " is the winner!"
-}
