@@ -11,16 +11,7 @@ var woolOwners = [
   }
 ];
 
-
-var bags = haveYouAnyWool;
-
-var haveYouAnyWool = function() {
-	for (var i = 0; i < woolOwners.length; i++) {
-	var totalBags = totalBags + i;
-	}
-	return (i);
-};
-
+var bags = woolOwners.length;
 
 function baabaaBlackSheep() {
 	console.log("BaaBaa BlackSheep have you any wool?");
